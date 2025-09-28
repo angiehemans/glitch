@@ -1,0 +1,110 @@
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-inter), Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Ensure Inter is applied to all text elements */
+h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, label {
+  font-family: inherit;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+/* Force light theme for form inputs to ensure text is always visible */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  color: #1e293b !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Ensure focused inputs also maintain proper colors */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  color: #1e293b !important;
+  background: white !important;
+  border-color: #3b82f6 !important;
+  outline: none !important;
+}
+
+/* Minimal button styles - override complex gradients and animations */
+button,
+.button,
+.btn,
+[class*="button"],
+[class*="btn"],
+[class*="link"]:not(.post-card-link):not(.back-link) {
+  transition: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  border-radius: 0.5rem !important;
+}
+
+/* Remove all hover effects globally for performance */
+*:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Simplify all gradients to solid colors */
+[style*="linear-gradient"],
+[class*="gradient"] {
+  background: #3b82f6 !important;
+}
+
+/* Remove all backdrop filters */
+[style*="backdrop-filter"],
+[class*="backdrop"] {
+  backdrop-filter: none !important;
+}

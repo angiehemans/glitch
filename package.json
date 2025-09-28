@@ -1,0 +1,40 @@
+{
+  "name": "glitch",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run db:generate && next dev --turbopack",
+    "build": "npm run db:generate && npm run db:deploy && next build --turbopack",
+    "start": "next start",
+    "lint": "eslint",
+    "setup": "node scripts/setup.js",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:deploy": "prisma migrate deploy",
+    "db:studio": "prisma studio",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:reset": "prisma migrate reset --force",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.16.2",
+    "bcryptjs": "^3.0.2",
+    "next": "15.5.4",
+    "next-auth": "^4.24.11",
+    "prisma": "^6.16.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.4",
+    "tsx": "^4.20.6",
+    "typescript": "^5"
+  }
+}
