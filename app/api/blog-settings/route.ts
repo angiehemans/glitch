@@ -1,5 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
+import { NextRequest, NextResponse } from 'next/server'
+
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
@@ -11,7 +12,7 @@ export async function GET() {
     if (!settings) {
       // Create default settings if none exist
       settings = await prisma.blogSettings.create({
-        data: {}
+        data: {},
       })
     }
 
@@ -30,13 +31,11 @@ export async function PUT(req: NextRequest) {
     const session = await getServerSession(authOptions)
 
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      )
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const { title, description, language, managingEditor, webMaster } = await req.json()
+    const { title, description, language, managingEditor, webMaster } =
+      await req.json()
 
     // Validate required fields
     if (!title || !description) {
@@ -59,8 +58,8 @@ export async function PUT(req: NextRequest) {
           language: language || 'en-us',
           managingEditor: managingEditor || 'Blog Admin',
           webMaster: webMaster || 'Blog Admin',
-          generator: 'Glitch RSS'
-        }
+          generator: 'Glitch RSS',
+        },
       })
     } else {
       // Create new settings
@@ -71,14 +70,14 @@ export async function PUT(req: NextRequest) {
           language: language || 'en-us',
           managingEditor: managingEditor || 'Blog Admin',
           webMaster: webMaster || 'Blog Admin',
-          generator: 'Glitch RSS'
-        }
+          generator: 'Glitch RSS',
+        },
       })
     }
 
     return NextResponse.json({
       message: 'Blog settings updated successfully',
-      settings
+      settings,
     })
   } catch (error) {
     console.error('Blog settings update error:', error)

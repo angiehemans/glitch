@@ -1,14 +1,18 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+
 import { useSession } from 'next-auth/react'
-import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
+import { useParams, useRouter } from 'next/navigation'
+
+import Button from '@/app/components/Button'
+
 import '../edit-post.css'
 
 interface Post {
   id: string
-  title: string
+  title: string | null
   content: string
   published: boolean
   createdAt: string
@@ -43,7 +47,7 @@ export default function EditPostPage() {
       if (response.ok) {
         const data = await response.json()
         setPost(data)
-        setTitle(data.title)
+        setTitle(data.title || '')
         setContent(data.content)
       } else {
         setError('Post not found')
@@ -67,13 +71,17 @@ export default function EditPostPage() {
     return (
       <div className="edit-post-container">
         <div className="edit-post-header">
-          <Link href="/dashboard" className="back-link">← Back to Dashboard</Link>
+          <Link href="/dashboard" className="back-link">
+            ← Back to Dashboard
+          </Link>
           <h1 className="edit-post-title">Edit Post</h1>
         </div>
         <div className="error-state">
           <h2>Post not found</h2>
           <p>The post you're looking for doesn't exist or has been deleted.</p>
-          <Link href="/dashboard" className="dashboard-link">Back to Dashboard</Link>
+          <Link href="/dashboard" className="dashboard-link">
+            Back to Dashboard
+          </Link>
         </div>
       </div>
     )
@@ -127,14 +135,18 @@ export default function EditPostPage() {
   return (
     <div className="edit-post-container">
       <div className="edit-post-header">
-        <Link href="/dashboard" className="back-link">← Back to Dashboard</Link>
+        <Link href="/dashboard" className="back-link">
+          ← Back to Dashboard
+        </Link>
         <h1 className="edit-post-title">Edit Post</h1>
       </div>
 
       <div className="edit-post-card">
         <form onSubmit={handleSubmit} className="edit-post-form">
           <div className="form-group">
-            <label htmlFor="title" className="form-label">Post Title</label>
+            <label htmlFor="title" className="form-label">
+              Post Title
+            </label>
             <input
               type="text"
               id="title"
@@ -147,7 +159,9 @@ export default function EditPostPage() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="content" className="form-label">Content</label>
+            <label htmlFor="content" className="form-label">
+              Content
+            </label>
             <textarea
               id="content"
               value={content}
@@ -162,35 +176,40 @@ export default function EditPostPage() {
           {error && <div className="error-message">{error}</div>}
 
           <div className="form-actions">
-            <Link href="/dashboard" className="cancel-button">Cancel</Link>
+            <Link href="/dashboard" className="cancel-button">
+              Cancel
+            </Link>
             {post && !post.published && (
-              <button
+              <Button
                 type="button"
                 onClick={handlePublish}
                 disabled={loading}
-                className="publish-button"
+                variant="primary"
+                loading={loading}
               >
-                {loading ? 'Publishing...' : 'Publish Post'}
-              </button>
+                Publish Post
+              </Button>
             )}
             {post && post.published && (
-              <button
+              <Button
                 type="button"
                 onClick={handleSaveDraft}
                 disabled={loading}
-                className="draft-button"
+                variant="secondary"
+                loading={loading}
               >
-                {loading ? 'Saving...' : 'Save as Draft'}
-              </button>
+                Save as Draft
+              </Button>
             )}
-            <button
+            <Button
               type="button"
               onClick={handleUpdate}
               disabled={loading}
-              className="submit-button"
+              variant="primary"
+              loading={loading}
             >
-              {loading ? 'Updating...' : 'Update Post'}
-            </button>
+              Update Post
+            </Button>
           </div>
         </form>
       </div>

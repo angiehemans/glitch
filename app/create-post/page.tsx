@@ -1,9 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+
 import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
+import Button from '@/app/components/Button'
+
 import './create-post.css'
 
 export default function CreatePostPage() {
@@ -23,7 +27,10 @@ export default function CreatePostPage() {
     return null
   }
 
-  const handleSubmit = async (e: React.FormEvent, published: boolean = true) => {
+  const handleSubmit = async (
+    e: React.FormEvent,
+    published: boolean = true
+  ) => {
     e.preventDefault()
     setLoading(true)
     setError('')
@@ -62,27 +69,32 @@ export default function CreatePostPage() {
   return (
     <div className="create-post-container">
       <div className="create-post-header">
-        <Link href="/dashboard" className="back-link">← Back to Dashboard</Link>
+        <Link href="/dashboard" className="back-link">
+          ← Back to Dashboard
+        </Link>
         <h1 className="create-post-title">Create New Post</h1>
       </div>
 
       <div className="create-post-card">
         <form onSubmit={handleSubmit} className="create-post-form">
           <div className="form-group">
-            <label htmlFor="title" className="form-label">Post Title</label>
+            <label htmlFor="title" className="form-label">
+              Post Title (optional)
+            </label>
             <input
               type="text"
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              required
               className="form-input"
               placeholder="Enter your post title"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="content" className="form-label">Content</label>
+            <label htmlFor="content" className="form-label">
+              Content
+            </label>
             <textarea
               id="content"
               value={content}
@@ -97,23 +109,27 @@ export default function CreatePostPage() {
           {error && <div className="error-message">{error}</div>}
 
           <div className="form-actions">
-            <Link href="/dashboard" className="cancel-button">Cancel</Link>
-            <button
+            <Link href="/dashboard" className="cancel-button">
+              Cancel
+            </Link>
+            <Button
               type="button"
               onClick={handleSaveDraft}
               disabled={loading}
-              className="draft-button"
+              variant="secondary"
+              loading={loading}
             >
-              {loading ? 'Saving...' : 'Save as Draft'}
-            </button>
-            <button
+              Save as Draft
+            </Button>
+            <Button
               type="button"
               onClick={handlePublish}
               disabled={loading}
-              className="submit-button"
+              variant="primary"
+              loading={loading}
             >
-              {loading ? 'Publishing...' : 'Publish Post'}
-            </button>
+              Publish Post
+            </Button>
           </div>
         </form>
       </div>

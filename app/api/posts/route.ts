@@ -1,5 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
+import { NextRequest, NextResponse } from 'next/server'
+
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
@@ -11,13 +12,13 @@ export async function GET() {
         author: {
           select: {
             name: true,
-            email: true
-          }
-        }
+            email: true,
+          },
+        },
       },
       orderBy: {
-        createdAt: 'desc'
-      }
+        createdAt: 'desc',
+      },
     })
 
     return NextResponse.json(posts)
@@ -35,36 +36,33 @@ export async function POST(req: NextRequest) {
     const session = await getServerSession(authOptions)
 
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      )
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     const { title, content, published = true } = await req.json()
 
-    if (!title || !content) {
+    if (!content) {
       return NextResponse.json(
-        { error: 'Title and content are required' },
+        { error: 'Content is required' },
         { status: 400 }
       )
     }
 
     const post = await prisma.post.create({
       data: {
-        title,
+        title: title || null,
         content,
         published,
-        authorId: session.user.id
+        authorId: session.user.id,
       },
       include: {
         author: {
           select: {
             name: true,
-            email: true
-          }
-        }
-      }
+            email: true,
+          },
+        },
+      },
     })
 
     return NextResponse.json(post, { status: 201 })

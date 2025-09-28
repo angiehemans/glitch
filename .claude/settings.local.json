@@ -1,9 +1,6 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(npm install:*)",
-      "mcp__ide__getDiagnostics"
-    ],
+    "allow": ["Bash(npm install:*)", "mcp__ide__getDiagnostics"],
     "deny": [],
     "ask": []
   }

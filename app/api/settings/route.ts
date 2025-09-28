@@ -1,31 +1,27 @@
-import { NextRequest, NextResponse } from 'next/server'
+import bcrypt from 'bcryptjs'
+
 import { getServerSession } from 'next-auth'
+import { NextRequest, NextResponse } from 'next/server'
+
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
-import bcrypt from 'bcryptjs'
 
 export async function PUT(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions)
 
     if (!session?.user?.id) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      )
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     const { name, currentPassword, newPassword } = await req.json()
 
     const user = await prisma.user.findUnique({
-      where: { id: session.user.id }
+      where: { id: session.user.id },
     })
 
     if (!user) {
-      return NextResponse.json(
-        { error: 'User not found' },
-        { status: 404 }
-      )
+      return NextResponse.json({ error: 'User not found' }, { status: 404 })
     }
 
     const updateData: any = {}
@@ -72,13 +68,13 @@ export async function PUT(req: NextRequest) {
       select: {
         id: true,
         email: true,
-        name: true
-      }
+        name: true,
+      },
     })
 
     return NextResponse.json({
       message: 'Settings updated successfully',
-      user: updatedUser
+      user: updatedUser,
     })
   } catch (error) {
     console.error('Settings update error:', error)

@@ -1,9 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+
 import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
+import Button from '@/app/components/Button'
+
 import './login.css'
 
 export default function LoginPage() {
@@ -44,7 +48,9 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit} className="login-form">
           <div className="form-group">
-            <label htmlFor="email" className="form-label">Email</label>
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -57,7 +63,9 @@ export default function LoginPage() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="password" className="form-label">Password</label>
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
             <input
               type="password"
               id="password"
@@ -71,15 +79,15 @@ export default function LoginPage() {
 
           {error && <div className="error-message">{error}</div>}
 
-          <button
+          <Button
             type="submit"
             disabled={loading}
-            className="login-button"
+            variant="primary"
+            loading={loading}
           >
-            {loading ? 'Signing in...' : 'Sign In'}
-          </button>
+            Sign In
+          </Button>
         </form>
-
       </div>
     </div>
   )

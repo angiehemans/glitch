@@ -1,5 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
+import { NextRequest, NextResponse } from 'next/server'
+
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 
@@ -14,10 +15,10 @@ export async function GET(
       include: {
         author: {
           select: {
-            name: true
-          }
-        }
-      }
+            name: true,
+          },
+        },
+      },
     })
 
     if (!post) {
@@ -27,7 +28,10 @@ export async function GET(
     return NextResponse.json(post)
   } catch (error) {
     console.error('Error fetching post:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
   }
 }
 
@@ -51,16 +55,19 @@ export async function PATCH(
       include: {
         author: {
           select: {
-            name: true
-          }
-        }
-      }
+            name: true,
+          },
+        },
+      },
     })
 
     return NextResponse.json(post)
   } catch (error) {
     console.error('Error updating post:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
   }
 }
 
@@ -78,7 +85,7 @@ export async function PUT(
     const { title, content, published } = await request.json()
     const { id } = await params
 
-    const updateData: any = { title, content }
+    const updateData: any = { title: title || null, content }
     if (published !== undefined) {
       updateData.published = published
     }
@@ -89,16 +96,19 @@ export async function PUT(
       include: {
         author: {
           select: {
-            name: true
-          }
-        }
-      }
+            name: true,
+          },
+        },
+      },
     })
 
     return NextResponse.json(post)
   } catch (error) {
     console.error('Error updating post:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
   }
 }
 
@@ -116,12 +126,15 @@ export async function DELETE(
     const { id } = await params
 
     await prisma.post.delete({
-      where: { id }
+      where: { id },
     })
 
     return NextResponse.json({ message: 'Post deleted successfully' })
   } catch (error) {
     console.error('Error deleting post:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
   }
 }

@@ -22,7 +22,9 @@ export default function AuthNav() {
 
   return (
     <div className="nav-unauthenticated">
-      <Link href="/login" className="auth-link">Login</Link>
+      <Link href="/login" className="auth-link">
+        Login
+      </Link>
     </div>
   )
 }

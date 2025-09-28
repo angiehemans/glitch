@@ -8,11 +8,13 @@ async function main() {
   const adminPassword = process.env.ADMIN_PASSWORD
 
   if (!adminEmail || !adminPassword) {
-    throw new Error('ADMIN_EMAIL and ADMIN_PASSWORD environment variables are required')
+    throw new Error(
+      'ADMIN_EMAIL and ADMIN_PASSWORD environment variables are required'
+    )
   }
 
   const existingUser = await prisma.user.findUnique({
-    where: { email: adminEmail }
+    where: { email: adminEmail },
   })
 
   if (existingUser) {
@@ -26,8 +28,8 @@ async function main() {
     data: {
       email: adminEmail,
       password: hashedPassword,
-      name: 'Admin'
-    }
+      name: 'Admin',
+    },
   })
 
   console.log(`Admin user created with email: ${adminUser.email}`)
@@ -43,8 +45,8 @@ async function main() {
         language: 'en-us',
         managingEditor: 'Blog Admin',
         webMaster: 'Blog Admin',
-        generator: 'Glitch RSS'
-      }
+        generator: 'Glitch RSS',
+      },
     })
 
     console.log(`Blog settings created with title: ${blogSettings.title}`)

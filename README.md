@@ -21,6 +21,7 @@ npm run setup
 ```
 
 This will:
+
 - Install all dependencies
 - Generate Prisma client
 - Set up the database schema
@@ -77,12 +78,17 @@ Open [http://localhost:3000](http://localhost:3000) to see your blog.
 ## Available Scripts
 
 ### Development
-- `npm run dev` - Start development server with automatic Prisma client generation
+
+- `npm run dev` - **Start both Next.js and Prisma dev servers concurrently** (recommended)
+- `npm run dev:simple` - Start only Next.js development server with Prisma client generation
+- `npm run dev:next` - Start only Next.js development server
+- `npm run dev:prisma` - Start only Prisma development server
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run setup` - Complete project setup (recommended for first-time setup)
 
 ### Database Management
+
 - `npm run db:generate` - Generate Prisma client
 - `npm run db:push` - Push schema changes to database
 - `npm run db:migrate` - Create and run migrations
@@ -91,6 +97,7 @@ Open [http://localhost:3000](http://localhost:3000) to see your blog.
 - `npm run db:reset` - Reset database (⚠️ destructive)
 
 ### Other
+
 - `npm run lint` - Run ESLint
 
 ## Contributing
@@ -138,6 +145,7 @@ We welcome contributions to Glitch Blog! Whether you're fixing bugs, adding feat
    - All TypeScript errors are resolved
 
 2. **Write clear commit messages**:
+
    ```
    feat: add dark mode toggle
    fix: resolve SSR hydration issue
@@ -158,6 +166,7 @@ We welcome contributions to Glitch Blog! Whether you're fixing bugs, adding feat
 ### Reporting Issues
 
 When reporting bugs, please include:
+
 - **Steps to reproduce** the issue
 - **Expected behavior** vs actual behavior
 - **Environment details** (Node.js version, OS, database)
@@ -167,6 +176,7 @@ When reporting bugs, please include:
 ### Feature Requests
 
 For feature requests, please:
+
 - **Search existing issues** to avoid duplicates
 - **Describe the use case** and why the feature would be valuable
 - **Provide examples** or mockups if possible
@@ -182,6 +192,7 @@ For feature requests, please:
 ### Questions?
 
 If you have questions about contributing, feel free to:
+
 - Open an issue with the "question" label
 - Check existing issues and discussions
 - Review the codebase for examples of similar implementations

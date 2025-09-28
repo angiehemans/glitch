@@ -1,6 +1,8 @@
 import Link from 'next/link'
-import { prisma } from '@/lib/prisma'
 import { notFound } from 'next/navigation'
+
+import { prisma } from '@/lib/prisma'
+
 import './post.css'
 
 interface Post {
@@ -19,16 +21,16 @@ async function getPost(id: string): Promise<Post | null> {
     const post = await prisma.post.findUnique({
       where: {
         id,
-        published: true
+        published: true,
       },
       include: {
         author: {
           select: {
             name: true,
-            email: true
-          }
-        }
-      }
+            email: true,
+          },
+        },
+      },
     })
 
     if (!post) {
@@ -48,11 +50,15 @@ function formatDate(date: Date) {
     month: 'long',
     day: 'numeric',
     hour: '2-digit',
-    minute: '2-digit'
+    minute: '2-digit',
   })
 }
 
-export default async function PostPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
   const { id } = await params
   const post = await getPost(id)
 
@@ -63,7 +69,9 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
   return (
     <div className="post-page-container">
       <div className="post-header">
-        <Link href="/" className="back-link">← Back to Home</Link>
+        <Link href="/" className="back-link">
+          ← Back to Home
+        </Link>
       </div>
 
       <article className="post-article">

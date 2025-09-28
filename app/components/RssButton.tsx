@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+import Button from './Button'
+
 export default function RssButton() {
   const [rssCopied, setRssCopied] = useState(false)
 
@@ -25,12 +27,13 @@ export default function RssButton() {
   }
 
   return (
-    <button
+    <Button
       onClick={copyRssUrl}
-      className="rss-button"
+      variant="outline"
+      size="small"
       title="Copy RSS feed URL"
     >
       📡 {rssCopied ? 'Copied!' : 'RSS'}
-    </button>
+    </Button>
   )
 }

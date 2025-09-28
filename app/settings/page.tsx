@@ -1,9 +1,13 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 import { useSession } from 'next-auth/react'
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
+import Button from '@/app/components/Button'
+
 import './settings.css'
 
 interface BlogSettings {
@@ -25,7 +29,7 @@ export default function SettingsPage() {
     description: '',
     language: 'en-us',
     managingEditor: '',
-    webMaster: ''
+    webMaster: '',
   })
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
@@ -49,7 +53,7 @@ export default function SettingsPage() {
           description: data.description || '',
           language: data.language || 'en-us',
           managingEditor: data.managingEditor || '',
-          webMaster: data.webMaster || ''
+          webMaster: data.webMaster || '',
         })
       }
     } catch (error) {
@@ -173,7 +177,9 @@ export default function SettingsPage() {
   return (
     <div className="settings-container">
       <div className="settings-header">
-        <Link href="/dashboard" className="back-link">← Back to Dashboard</Link>
+        <Link href="/dashboard" className="back-link">
+          ← Back to Dashboard
+        </Link>
         <h1 className="settings-title">Account Settings</h1>
       </div>
 
@@ -186,7 +192,9 @@ export default function SettingsPage() {
           <h2 className="section-title">Update Username</h2>
           <form onSubmit={handleNameUpdate} className="settings-form">
             <div className="form-group">
-              <label htmlFor="name" className="form-label">Username</label>
+              <label htmlFor="name" className="form-label">
+                Username
+              </label>
               <input
                 type="text"
                 id="name"
@@ -196,13 +204,14 @@ export default function SettingsPage() {
                 placeholder="Enter your username"
               />
             </div>
-            <button
+            <Button
               type="submit"
               disabled={loading}
-              className="update-button"
+              variant="primary"
+              loading={loading}
             >
-              {loading ? 'Updating...' : 'Update Username'}
-            </button>
+              Update Username
+            </Button>
           </form>
         </div>
 
@@ -211,7 +220,9 @@ export default function SettingsPage() {
           <h2 className="section-title">Change Password</h2>
           <form onSubmit={handlePasswordUpdate} className="settings-form">
             <div className="form-group">
-              <label htmlFor="currentPassword" className="form-label">Current Password</label>
+              <label htmlFor="currentPassword" className="form-label">
+                Current Password
+              </label>
               <input
                 type="password"
                 id="currentPassword"
@@ -224,7 +235,9 @@ export default function SettingsPage() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="newPassword" className="form-label">New Password</label>
+              <label htmlFor="newPassword" className="form-label">
+                New Password
+              </label>
               <input
                 type="password"
                 id="newPassword"
@@ -238,7 +251,9 @@ export default function SettingsPage() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="confirmPassword" className="form-label">Confirm New Password</label>
+              <label htmlFor="confirmPassword" className="form-label">
+                Confirm New Password
+              </label>
               <input
                 type="password"
                 id="confirmPassword"
@@ -251,13 +266,16 @@ export default function SettingsPage() {
               />
             </div>
 
-            <button
+            <Button
               type="submit"
-              disabled={loading || !currentPassword || !newPassword || !confirmPassword}
-              className="update-button"
+              disabled={
+                loading || !currentPassword || !newPassword || !confirmPassword
+              }
+              variant="primary"
+              loading={loading}
             >
-              {loading ? 'Updating...' : 'Change Password'}
-            </button>
+              Change Password
+            </Button>
           </form>
         </div>
 
@@ -271,7 +289,9 @@ export default function SettingsPage() {
             </div>
             <div className="info-item">
               <span className="info-label">Current Username:</span>
-              <span className="info-value">{session?.user?.name || 'Not set'}</span>
+              <span className="info-value">
+                {session?.user?.name || 'Not set'}
+              </span>
             </div>
           </div>
         </div>
@@ -281,12 +301,16 @@ export default function SettingsPage() {
           <h2 className="section-title">Blog Settings</h2>
           <form onSubmit={handleBlogSettingsUpdate} className="settings-form">
             <div className="form-group">
-              <label htmlFor="blogTitle" className="form-label">Blog Title</label>
+              <label htmlFor="blogTitle" className="form-label">
+                Blog Title
+              </label>
               <input
                 type="text"
                 id="blogTitle"
                 value={blogSettings.title}
-                onChange={(e) => setBlogSettings({...blogSettings, title: e.target.value})}
+                onChange={(e) =>
+                  setBlogSettings({ ...blogSettings, title: e.target.value })
+                }
                 required
                 className="form-input"
                 placeholder="My Blog"
@@ -294,11 +318,18 @@ export default function SettingsPage() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="blogDescription" className="form-label">Blog Description</label>
+              <label htmlFor="blogDescription" className="form-label">
+                Blog Description
+              </label>
               <textarea
                 id="blogDescription"
                 value={blogSettings.description}
-                onChange={(e) => setBlogSettings({...blogSettings, description: e.target.value})}
+                onChange={(e) =>
+                  setBlogSettings({
+                    ...blogSettings,
+                    description: e.target.value,
+                  })
+                }
                 required
                 className="form-textarea"
                 placeholder="A personal blog with thoughts and ideas"
@@ -307,11 +338,15 @@ export default function SettingsPage() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="blogLanguage" className="form-label">Language</label>
+              <label htmlFor="blogLanguage" className="form-label">
+                Language
+              </label>
               <select
                 id="blogLanguage"
                 value={blogSettings.language}
-                onChange={(e) => setBlogSettings({...blogSettings, language: e.target.value})}
+                onChange={(e) =>
+                  setBlogSettings({ ...blogSettings, language: e.target.value })
+                }
                 className="form-input"
               >
                 <option value="en-us">English (US)</option>
@@ -327,37 +362,51 @@ export default function SettingsPage() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="managingEditor" className="form-label">Managing Editor</label>
+              <label htmlFor="managingEditor" className="form-label">
+                Managing Editor
+              </label>
               <input
                 type="text"
                 id="managingEditor"
                 value={blogSettings.managingEditor}
-                onChange={(e) => setBlogSettings({...blogSettings, managingEditor: e.target.value})}
+                onChange={(e) =>
+                  setBlogSettings({
+                    ...blogSettings,
+                    managingEditor: e.target.value,
+                  })
+                }
                 className="form-input"
                 placeholder="Blog Admin"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="webMaster" className="form-label">Web Master</label>
+              <label htmlFor="webMaster" className="form-label">
+                Web Master
+              </label>
               <input
                 type="text"
                 id="webMaster"
                 value={blogSettings.webMaster}
-                onChange={(e) => setBlogSettings({...blogSettings, webMaster: e.target.value})}
+                onChange={(e) =>
+                  setBlogSettings({
+                    ...blogSettings,
+                    webMaster: e.target.value,
+                  })
+                }
                 className="form-input"
                 placeholder="Blog Admin"
               />
             </div>
 
-
-            <button
+            <Button
               type="submit"
               disabled={loading}
-              className="update-button"
+              variant="primary"
+              loading={loading}
             >
-              {loading ? 'Updating...' : 'Update Blog Settings'}
-            </button>
+              Update Blog Settings
+            </Button>
           </form>
         </div>
       </div>

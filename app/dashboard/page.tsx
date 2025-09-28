@@ -1,10 +1,14 @@
 'use client'
 
-import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+
+import { useSession } from 'next-auth/react'
 import { signOut } from 'next-auth/react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
+import Button from '@/app/components/Button'
+
 import './dashboard.css'
 
 interface Post {
@@ -55,11 +59,11 @@ export default function Dashboard() {
 
     try {
       const response = await fetch(`/api/posts/${postId}`, {
-        method: 'DELETE'
+        method: 'DELETE',
       })
 
       if (response.ok) {
-        setPosts(posts.filter(post => post.id !== postId))
+        setPosts(posts.filter((post) => post.id !== postId))
       } else {
         setError('Failed to delete post')
       }
@@ -73,17 +77,17 @@ export default function Dashboard() {
       const response = await fetch(`/api/posts/${postId}`, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ published: !published })
+        body: JSON.stringify({ published: !published }),
       })
 
       if (response.ok) {
-        setPosts(posts.map(post =>
-          post.id === postId
-            ? { ...post, published: !published }
-            : post
-        ))
+        setPosts(
+          posts.map((post) =>
+            post.id === postId ? { ...post, published: !published } : post
+          )
+        )
       } else {
         setError('Failed to update post')
       }
@@ -101,8 +105,8 @@ export default function Dashboard() {
     return <div className="loading">Loading dashboard...</div>
   }
 
-  const publishedPosts = posts.filter(post => post.published)
-  const draftPosts = posts.filter(post => !post.published)
+  const publishedPosts = posts.filter((post) => post.published)
+  const draftPosts = posts.filter((post) => !post.published)
 
   return (
     <div className="dashboard-container">
@@ -120,12 +124,15 @@ export default function Dashboard() {
             <Link href="/create-post" className="create-post-link">
               Create Post
             </Link>
+            <Link href="/feeds" className="feeds-link">
+              RSS Feeds
+            </Link>
             <Link href="/settings" className="settings-link">
               Settings
             </Link>
-            <button onClick={handleLogout} className="logout-button">
+            <Button onClick={handleLogout} variant="outline">
               Logout
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -139,18 +146,21 @@ export default function Dashboard() {
             <div className="section-header">
               <h2 className="section-title">Published Posts</h2>
               <div className="posts-count">
-                {publishedPosts.length} {publishedPosts.length === 1 ? 'post' : 'posts'}
+                {publishedPosts.length}{' '}
+                {publishedPosts.length === 1 ? 'post' : 'posts'}
               </div>
             </div>
 
             {publishedPosts.length === 0 ? (
               <div className="no-posts">
                 <h3>No published posts yet</h3>
-                <p>Publish your first blog post to make it visible to readers.</p>
+                <p>
+                  Publish your first blog post to make it visible to readers.
+                </p>
               </div>
             ) : (
               <div className="posts-grid">
-                {publishedPosts.map(post => (
+                {publishedPosts.map((post) => (
                   <div key={post.id} className="post-card">
                     <div className="post-card-header">
                       <h3 className="post-card-title">{post.title}</h3>
@@ -165,8 +175,7 @@ export default function Dashboard() {
                       <p className="post-excerpt">
                         {post.content.length > 150
                           ? post.content.substring(0, 150) + '...'
-                          : post.content
-                        }
+                          : post.content}
                       </p>
                     </div>
 
@@ -176,7 +185,8 @@ export default function Dashboard() {
                       </span>
                       {post.updatedAt !== post.createdAt && (
                         <span className="post-updated">
-                          Updated: {new Date(post.updatedAt).toLocaleDateString()}
+                          Updated:{' '}
+                          {new Date(post.updatedAt).toLocaleDateString()}
                         </span>
                       )}
                     </div>
@@ -185,21 +195,26 @@ export default function Dashboard() {
                       <Link href={`/posts/${post.id}`} className="view-link">
                         View
                       </Link>
-                      <Link href={`/edit-post/${post.id}`} className="edit-link">
+                      <Link
+                        href={`/edit-post/${post.id}`}
+                        className="edit-link"
+                      >
                         Edit
                       </Link>
-                      <button
+                      <Button
                         onClick={() => togglePublished(post.id, post.published)}
-                        className="toggle-button unpublish"
+                        variant="secondary"
+                        size="small"
                       >
                         Unpublish
-                      </button>
-                      <button
+                      </Button>
+                      <Button
                         onClick={() => handleDelete(post.id)}
-                        className="delete-button"
+                        variant="danger"
+                        size="small"
                       >
                         Delete
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 ))}
@@ -212,7 +227,8 @@ export default function Dashboard() {
             <div className="section-header">
               <h2 className="section-title">Draft Posts</h2>
               <div className="posts-count">
-                {draftPosts.length} {draftPosts.length === 1 ? 'draft' : 'drafts'}
+                {draftPosts.length}{' '}
+                {draftPosts.length === 1 ? 'draft' : 'drafts'}
               </div>
             </div>
 
@@ -226,14 +242,12 @@ export default function Dashboard() {
               </div>
             ) : (
               <div className="posts-grid">
-                {draftPosts.map(post => (
+                {draftPosts.map((post) => (
                   <div key={post.id} className="post-card">
                     <div className="post-card-header">
                       <h3 className="post-card-title">{post.title}</h3>
                       <div className="post-status">
-                        <span className="status-badge draft">
-                          Draft
-                        </span>
+                        <span className="status-badge draft">Draft</span>
                       </div>
                     </div>
 
@@ -241,8 +255,7 @@ export default function Dashboard() {
                       <p className="post-excerpt">
                         {post.content.length > 150
                           ? post.content.substring(0, 150) + '...'
-                          : post.content
-                        }
+                          : post.content}
                       </p>
                     </div>
 
@@ -252,27 +265,33 @@ export default function Dashboard() {
                       </span>
                       {post.updatedAt !== post.createdAt && (
                         <span className="post-updated">
-                          Updated: {new Date(post.updatedAt).toLocaleDateString()}
+                          Updated:{' '}
+                          {new Date(post.updatedAt).toLocaleDateString()}
                         </span>
                       )}
                     </div>
 
                     <div className="post-card-actions">
-                      <Link href={`/edit-post/${post.id}`} className="edit-link">
+                      <Link
+                        href={`/edit-post/${post.id}`}
+                        className="edit-link"
+                      >
                         Edit
                       </Link>
-                      <button
+                      <Button
                         onClick={() => togglePublished(post.id, post.published)}
-                        className="toggle-button publish"
+                        variant="primary"
+                        size="small"
                       >
                         Publish
-                      </button>
-                      <button
+                      </Button>
+                      <Button
                         onClick={() => handleDelete(post.id)}
-                        className="delete-button"
+                        variant="danger"
+                        size="small"
                       >
                         Delete
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 ))}

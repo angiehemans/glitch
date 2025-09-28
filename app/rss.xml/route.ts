@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+
 import { prisma } from '@/lib/prisma'
 
 export async function GET() {
@@ -9,7 +10,7 @@ export async function GET() {
     // If no settings exist, create default ones
     if (!blogSettings) {
       blogSettings = await prisma.blogSettings.create({
-        data: {}
+        data: {},
       })
     }
 
@@ -18,14 +19,14 @@ export async function GET() {
       include: {
         author: {
           select: {
-            name: true
-          }
-        }
+            name: true,
+          },
+        },
       },
       orderBy: {
-        createdAt: 'desc'
+        createdAt: 'desc',
       },
-      take: 20 // Limit to latest 20 posts
+      take: 20, // Limit to latest 20 posts
     })
 
     const siteUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
@@ -54,16 +55,21 @@ export async function GET() {
     <webMaster>${escapeXml(blogSettings.webMaster)}</webMaster>
     <generator>${escapeXml(blogSettings.generator)}</generator>
     <ttl>60</ttl>
-${posts.map(post => {
-  const postUrl = `${siteUrl}/posts/${post.id}`
-  const pubDate = new Date(post.createdAt).toUTCString()
-  const authorName = post.author.name || 'Blog Author'
+${posts
+  .map((post) => {
+    const postUrl = `${siteUrl}/posts/${post.id}`
+    const pubDate = new Date(post.createdAt).toUTCString()
+    const authorName = post.author.name || 'Blog Author'
 
-  const title = escapeXml(post.title)
-  const content = escapeXml(post.content)
-  const description = escapeXml(post.content.length > 200 ? post.content.substring(0, 200) + '...' : post.content)
+    const title = escapeXml(post.title)
+    const content = escapeXml(post.content)
+    const description = escapeXml(
+      post.content.length > 200
+        ? post.content.substring(0, 200) + '...'
+        : post.content
+    )
 
-  return `    <item>
+    return `    <item>
       <title>${title}</title>
       <description>${description}</description>
       <link>${postUrl}</link>
@@ -73,19 +79,25 @@ ${posts.map(post => {
       <content:encoded><![CDATA[
         <h1>${title}</h1>
         <p><strong>By:</strong> ${escapeXml(authorName)} | <strong>Published:</strong> ${pubDate}</p>
-        ${content.split('\n').map(paragraph => paragraph.trim() ? `<p>${escapeXml(paragraph)}</p>` : '').join('\n        ')}
+        ${content
+          .split('\n')
+          .map((paragraph) =>
+            paragraph.trim() ? `<p>${escapeXml(paragraph)}</p>` : ''
+          )
+          .join('\n        ')}
         <p><a href="${postUrl}">Read full post</a></p>
       ]]></content:encoded>
     </item>`
-}).join('\n')}
+  })
+  .join('\n')}
   </channel>
 </rss>`
 
     return new NextResponse(rssContent, {
       headers: {
         'Content-Type': 'application/xml',
-        'Cache-Control': 'public, max-age=3600' // Cache for 1 hour
-      }
+        'Cache-Control': 'public, max-age=3600', // Cache for 1 hour
+      },
     })
   } catch (error) {
     console.error('Error generating RSS feed:', error)
