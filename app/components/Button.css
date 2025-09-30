@@ -25,51 +25,51 @@
 
 /* Variants */
 .button--primary {
-  background: var(--grey-700);
+  background: var(--purple-700);
   color: var(--white);
-  border-color: var(--grey-700);
+  border-color: var(--purple-700);
 }
 
 .button--primary:disabled {
-  background: var(--grey-300);
-  border-color: var(--grey-300);
+  background: var(--purple-300);
+  border-color: var(--purple-300);
   color: var(--white);
 }
 
 .button--secondary {
-  background: var(--grey-50);
-  color: var(--grey-400);
-  border-color: var(--grey-100);
+  background: var(--purple-50);
+  color: var(--purple-400);
+  border-color: var(--purple-100);
 }
 
 .button--secondary:disabled {
-  background: var(--grey-25);
-  color: var(--grey-300);
-  border-color: var(--grey-75);
+  background: var(--purple-25);
+  color: var(--purple-300);
+  border-color: var(--purple-75);
 }
 
 .button--danger {
   background: #ffe6e6;
   color: #721c24;
-  border-color: var(--grey-100);
+  border-color: var(--purple-100);
 }
 
 .button--danger:disabled {
-  background: var(--grey-50);
-  color: var(--grey-300);
-  border-color: var(--grey-75);
+  background: var(--purple-50);
+  color: var(--purple-300);
+  border-color: var(--purple-75);
 }
 
 .button--outline {
   background: var(--white);
-  color: var(--grey-400);
-  border-color: var(--grey-100);
+  color: var(--purple-400);
+  border-color: var(--purple-100);
 }
 
 .button--outline:disabled {
   background: var(--white);
-  color: var(--grey-300);
-  border-color: var(--grey-75);
+  color: var(--purple-300);
+  border-color: var(--purple-75);
 }
 
 /* Sizes */

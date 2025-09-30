@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
+import AvatarUpload from '@/app/components/AvatarUpload'
 import Button from '@/app/components/Button'
 
 import './settings.css'
@@ -213,6 +214,21 @@ export default function SettingsPage() {
               Update Username
             </Button>
           </form>
+        </div>
+
+        {/* Avatar Upload Section */}
+        <div className="settings-section">
+          <h2 className="section-title">Profile Avatar</h2>
+          <div className="avatar-section">
+            <AvatarUpload
+              currentAvatar={session?.user?.image}
+              onAvatarChange={(avatarUrl) => {
+                // Update session with new avatar
+                update({ image: avatarUrl })
+              }}
+              size="large"
+            />
+          </div>
         </div>
 
         {/* Password Update Section */}

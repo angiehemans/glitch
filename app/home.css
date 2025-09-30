@@ -4,38 +4,14 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  flex: 1;
+  width: 100%;
 }
 
-.header {
-  background: var(--grey-50);
-  border-bottom: 1px solid #ddd;
-  padding: 1rem 0;
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.blog-title-section {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.blog-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--grey-700);
-}
 
 .rss-button {
   background: var(--white);
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   padding: 0.5rem;
   cursor: pointer;
   font-size: 0.875rem;
@@ -56,65 +32,67 @@
 .auth-link,
 .create-post-link,
 .settings-link {
-  color: var(--grey-400);
+  color: var(--purple-400);
   padding: 0.5rem 1rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   background: var(--white);
 }
 
 .logout-button {
   background: #eee;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   padding: 0.5rem 1rem;
   cursor: pointer;
 }
 
 .user-email {
-  color: var(--grey-400);
+  color: var(--purple-400);
   font-size: 0.875rem;
-  background: var(--grey-50);
+  background: var(--purple-50);
   padding: 0.5rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
 }
 
 .main {
-  flex: 1;
-  max-width: 1200px;
+  width: 600px;
+  max-width: 600px;
+  min-height: 100vh;
   margin: 0 auto;
-  /* padding: 2rem 1rem; */
-  width: 100%;
+  border-left: 2px solid var(--purple-75);
+  border-right: 2px solid var(--purple-75);
+  background-color: var(--white);
 }
 
 .posts-container {
   max-width: 600px;
-  min-height: 100vh;
-  margin: 0 auto;
-  border-left: 2px solid var(--grey-75);
-  border-right: 2px solid var(--grey-75);
-  background-color: var(--white);
-  padding: 20px;
+
+  padding: 0 20px;
 }
 
 .no-posts {
   text-align: center;
   padding: 3rem 2rem;
-  background: var(--grey-50);
-  border: 1px solid var(--grey-100);
+  background: var(--purple-50);
+  border: 1px solid var(--purple-100);
 }
 
 .posts-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  
 }
 
 
-@media (max-width: 768px) {
-  .header-content {
-    flex-direction: column;
-    gap: 1rem;
+@media (max-width: 600px) {
+  .main {
+    width: 100%;
+    max-width: 100%;
+    border-left: none;
+    border-right: none;
   }
+}
 
+@media (max-width: 768px) {
   .blog-title-section {
     flex-direction: column;
     gap: 0.5rem;
@@ -124,5 +102,4 @@
     flex-direction: column;
     gap: 0.5rem;
   }
-
 }

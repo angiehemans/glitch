@@ -1,8 +1,7 @@
 import { prisma } from '@/lib/prisma'
 
-import AuthNav from './components/AuthNav'
+import Header from './components/Header'
 import PostCard from './components/PostCard'
-import RssButton from './components/RssButton'
 import './home.css'
 
 // Force TypeScript to reload Prisma types
@@ -79,19 +78,10 @@ export default async function Home() {
 
   return (
     <div className="home-container">
-      <header className="header">
-        <div className="header-content">
-          <div className="blog-title-section">
-            <h1 className="blog-title">{blogSettings.title}</h1>
-            <RssButton />
-          </div>
-          <nav className="nav">
-            <AuthNav />
-          </nav>
-        </div>
-      </header>
+      
 
       <main className="main">
+        <Header title={blogSettings.title} />
         <div className="posts-container">
           {posts.length === 0 ? (
             <div className="no-posts">

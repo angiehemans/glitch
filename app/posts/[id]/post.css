@@ -11,9 +11,9 @@
 }
 
 .back-link {
-  color: var(--grey-400);
+  color: var(--purple-400);
   padding: 0.5rem 1rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   background: var(--white);
   display: inline-flex;
   align-items: center;
@@ -26,27 +26,27 @@
   align-items: center;
   min-height: 50vh;
   font-size: 1.125rem;
-  color: var(--grey-400);
+  color: var(--purple-400);
 }
 
 .error-state {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
-  background: var(--grey-50);
-  border: 1px solid var(--grey-100);
+  background: var(--purple-50);
+  border: 1px solid var(--purple-100);
   padding: 3rem 2rem;
 }
 
 .error-state h1 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--grey-700);
+  color: var(--purple-700);
   margin-bottom: 1rem;
 }
 
 .error-state p {
-  color: var(--grey-400);
+  color: var(--purple-400);
   margin-bottom: 2rem;
   font-size: 1rem;
   line-height: 1.6;
@@ -54,9 +54,9 @@
 
 .home-link {
   background: var(--white);
-  color: var(--grey-400);
+  color: var(--purple-400);
   padding: 0.75rem 1.5rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   display: inline-block;
 }
 
@@ -64,19 +64,19 @@
   max-width: 800px;
   margin: 0 auto;
   background: var(--white);
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
 }
 
 .post-article-header {
   padding: 2rem;
   border-bottom: 1px solid #ddd;
-  background: var(--grey-50);
+  background: var(--purple-50);
 }
 
 .post-article-title {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--grey-700);
+  color: var(--purple-700);
   margin: 0 0 1rem 0;
   line-height: 1.2;
 }
@@ -85,30 +85,30 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  color: var(--grey-400);
+  color: var(--purple-400);
   font-size: 0.875rem;
 }
 
 .post-article-author {
   background: var(--white);
   padding: 0.25rem 0.5rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
 }
 
 .post-article-date {
-  color: var(--grey-400);
+  color: var(--purple-400);
 }
 
 .post-article-content {
   padding: 2rem;
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--grey-500);
+  color: var(--purple-500);
 }
 
 .post-paragraph {
   margin-bottom: 1.5rem;
-  color: var(--grey-700);
+  color: var(--purple-700);
 }
 
 .post-paragraph:last-child {

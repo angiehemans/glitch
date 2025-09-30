@@ -16,7 +16,7 @@
 .back-link {
   color: #666;
   padding: 0.5rem 1rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   background: var(--white);
   align-self: flex-start;
   display: inline-flex;
@@ -27,14 +27,14 @@
 .create-post-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--grey-700);
+  color: var(--purple-700);
 }
 
 .create-post-form {
   max-width: 800px;
   margin: 0 auto;
   background: var(--white);
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   padding: 2rem;
 }
 
@@ -46,13 +46,13 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: var(--grey-700);
+  color: var(--purple-700);
 }
 
 .form-input {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   background: var(--white);
   font-size: 1rem;
 }
@@ -60,7 +60,7 @@
 .form-textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   background: var(--white);
   font-size: 1rem;
   min-height: 200px;
@@ -70,7 +70,7 @@
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: var(--grey-300);
+  border-color: var(--purple-300);
 }
 
 .form-actions {
@@ -82,7 +82,7 @@
 .submit-button,
 .draft-button {
   padding: 0.75rem 1.5rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   background: var(--white);
   cursor: pointer;
   font-weight: 600;
@@ -91,14 +91,14 @@
 .submit-button {
   background: #333;
   color: #fff;
-  border-color: var(--grey-700);
+  border-color: var(--purple-700);
 }
 
 .error-message,
 .success-message {
   padding: 1rem;
   margin-bottom: 1rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
 }
 
 .error-message {

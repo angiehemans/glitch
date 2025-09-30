@@ -8,6 +8,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import Button from '@/app/components/Button'
+import DashboardNav from '@/app/components/DashboardNav'
+import Header from '@/app/components/Header'
 
 import './dashboard.css'
 
@@ -110,34 +112,18 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      <div className="dashboard-header">
-        <div className="header-content">
-          <div className="dashboard-title-section">
-            <h1 className="dashboard-title">Dashboard</h1>
-            <p className="dashboard-subtitle">Manage your blog posts</p>
-          </div>
+      <main className="main">
+        <Header title="Dashboard" showRss={false} />
 
-          <div className="dashboard-nav">
-            <Link href="/" className="view-blog-link">
-              View Blog
-            </Link>
-            <Link href="/create-post" className="create-post-link">
-              Create Post
-            </Link>
-            <Link href="/feeds" className="feeds-link">
-              RSS Feeds
-            </Link>
-            <Link href="/settings" className="settings-link">
-              Settings
-            </Link>
-            <Button onClick={handleLogout} variant="outline">
-              Logout
-            </Button>
-          </div>
-        </div>
-      </div>
+        <DashboardNav
+          onLogout={handleLogout}
+          user={session?.user ? {
+            name: session.user.name,
+            email: session.user.email || '',
+            avatar: session.user.image
+          } : undefined}
+        />
 
-      <div className="dashboard-main">
         <div className="dashboard-content">
           {error && <div className="error-message">{error}</div>}
 
@@ -312,7 +298,7 @@ export default function Dashboard() {
             </div>
           )}
         </div>
-      </div>
+      </main>
     </div>
   )
 }

@@ -16,7 +16,7 @@
 .back-link {
   color: #666;
   padding: 0.5rem 1rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   background: var(--white);
   align-self: flex-start;
   display: inline-flex;
@@ -27,14 +27,14 @@
 .edit-post-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--grey-700);
+  color: var(--purple-700);
 }
 
 .edit-post-form {
   max-width: 800px;
   margin: 0 auto;
   background: var(--white);
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   padding: 2rem;
 }
 

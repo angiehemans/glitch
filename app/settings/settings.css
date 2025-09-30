@@ -13,9 +13,9 @@
 }
 
 .back-link {
-  color: var(--grey-400);
+  color: var(--purple-400);
   padding: 0.5rem 1rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   background: var(--white);
   align-self: flex-start;
   display: inline-flex;
@@ -26,7 +26,7 @@
 .settings-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--grey-700);
+  color: var(--purple-700);
   margin: 0;
 }
 
@@ -42,7 +42,7 @@
   background: #ffe6e6;
   color: #721c24;
   padding: 1rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   margin-bottom: 1rem;
 }
 
@@ -50,20 +50,20 @@
   background: #e8f5e8;
   color: #2d5016;
   padding: 1rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   margin-bottom: 1rem;
 }
 
 .settings-section {
   background: var(--white);
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   padding: 2rem;
 }
 
 .section-title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--grey-700);
+  color: var(--purple-700);
   margin: 0 0 1.5rem 0;
   border-bottom: 1px solid #ddd;
   padding-bottom: 0.75rem;
@@ -83,21 +83,21 @@
 
 .form-label {
   font-weight: 600;
-  color: var(--grey-700);
+  color: var(--purple-700);
   margin-bottom: 0.5rem;
 }
 
 .form-input {
   padding: 0.75rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   background: var(--white);
-  color: var(--grey-700);
+  color: var(--purple-700);
   width: 100%;
 }
 
 .form-input:focus {
   outline: none;
-  border-color: var(--grey-300);
+  border-color: var(--purple-300);
 }
 
 .update-button {
@@ -112,7 +112,7 @@
 
 .update-button:disabled {
   background: #999;
-  border-color: var(--grey-300);
+  border-color: var(--purple-300);
   cursor: not-allowed;
 }
 
@@ -127,20 +127,20 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background: var(--grey-50);
-  border: 1px solid var(--grey-100);
+  background: var(--purple-50);
+  border: 1px solid var(--purple-100);
 }
 
 .info-label {
   font-weight: 600;
-  color: var(--grey-700);
+  color: var(--purple-700);
 }
 
 .info-value {
-  color: var(--grey-400);
+  color: var(--purple-400);
   background: var(--white);
   padding: 0.25rem 0.5rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   font-size: 0.875rem;
   font-family: monospace;
 }
@@ -151,7 +151,7 @@
   align-items: center;
   min-height: 100vh;
   font-size: 1.125rem;
-  color: var(--grey-400);
+  color: var(--purple-400);
 }
 
 @media (max-width: 768px) {
@@ -172,4 +172,10 @@
   .info-value {
     width: 100%;
   }
+}
+
+.avatar-section {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
 }

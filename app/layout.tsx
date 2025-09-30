@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Jacquard_12 } from 'next/font/google'
 
 import { SessionProvider } from './components/SessionProvider'
 import './globals.css'
@@ -7,6 +7,12 @@ import './globals.css'
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
+})
+
+const jacquard12 = Jacquard_12({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: '400',
 })
 
 export const metadata: Metadata = {
@@ -39,7 +45,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} style={{ '--jacquard-font': jacquard12.style.fontFamily } as React.CSSProperties}>
         <SessionProvider>{children}</SessionProvider>
       </body>
     </html>

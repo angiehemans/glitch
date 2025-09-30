@@ -15,9 +15,9 @@
 }
 
 .back-link {
-  color: var(--grey-400);
+  color: var(--purple-400);
   padding: 0.5rem 1rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   background: var(--white);
   align-self: flex-start;
   display: inline-flex;
@@ -28,12 +28,12 @@
 .feeds-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--grey-700);
+  color: var(--purple-700);
   margin: 0;
 }
 
 .feeds-subtitle {
-  color: var(--grey-400);
+  color: var(--purple-400);
   margin: 0;
   font-size: 0.875rem;
 }
@@ -50,13 +50,13 @@
   background: #ffe6e6;
   color: #721c24;
   padding: 1rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   margin-bottom: 1rem;
 }
 
 .feeds-actions {
   background: var(--white);
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -72,14 +72,14 @@
 .feed-url-input {
   flex: 1;
   padding: 0.75rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   background: var(--white);
-  color: var(--grey-700);
+  color: var(--purple-700);
 }
 
 .feed-url-input:focus {
   outline: none;
-  border-color: var(--grey-300);
+  border-color: var(--purple-300);
 }
 
 .add-feed-button,
@@ -96,13 +96,13 @@
 .add-feed-button:disabled,
 .refresh-button:disabled {
   background: #999;
-  border-color: var(--grey-300);
+  border-color: var(--purple-300);
   cursor: not-allowed;
 }
 
 .refresh-button {
-  background: var(--grey-50);
-  color: var(--grey-400);
+  background: var(--purple-50);
+  color: var(--purple-400);
   border-color: #ddd;
   align-self: flex-start;
 }
@@ -113,9 +113,9 @@
 }
 
 .tab-button {
-  background: var(--grey-50);
-  color: var(--grey-400);
-  border: 1px solid var(--grey-100);
+  background: var(--purple-50);
+  color: var(--purple-400);
+  border: 1px solid var(--purple-100);
   border-bottom: none;
   padding: 0.75rem 1.5rem;
   cursor: pointer;
@@ -124,7 +124,7 @@
 
 .tab-button.active {
   background: var(--white);
-  color: var(--grey-700);
+  color: var(--purple-700);
   border-bottom: 1px solid #fff;
   position: relative;
   z-index: 1;
@@ -133,7 +133,7 @@
 .timeline-section,
 .subscriptions-section {
   background: var(--white);
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   border-top: none;
   padding: 2rem;
 }
@@ -142,9 +142,9 @@
 .no-feeds {
   text-align: center;
   padding: 3rem 2rem;
-  background: var(--grey-50);
-  border: 1px solid var(--grey-100);
-  color: var(--grey-400);
+  background: var(--purple-50);
+  border: 1px solid var(--purple-100);
+  color: var(--purple-400);
 }
 
 .feed-items {
@@ -154,8 +154,8 @@
 }
 
 .feed-item {
-  background: var(--grey-50);
-  border: 1px solid var(--grey-100);
+  background: var(--purple-50);
+  border: 1px solid var(--purple-100);
   padding: 1.5rem;
 }
 
@@ -175,7 +175,7 @@
 }
 
 .feed-item-title a {
-  color: var(--grey-700);
+  color: var(--purple-700);
   text-decoration: none;
 }
 
@@ -185,16 +185,16 @@
 
 .feed-item-source {
   background: var(--white);
-  color: var(--grey-400);
+  color: var(--purple-400);
   padding: 0.25rem 0.5rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   font-size: 0.75rem;
   font-weight: 600;
   white-space: nowrap;
 }
 
 .feed-item-description {
-  color: var(--grey-500);
+  color: var(--purple-500);
   line-height: 1.6;
   margin: 0 0 1rem 0;
 }
@@ -204,13 +204,13 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.75rem;
-  color: var(--grey-400);
+  color: var(--purple-400);
 }
 
 .feed-item-date {
   background: var(--white);
   padding: 0.25rem 0.5rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
 }
 
 .feed-list {
@@ -220,8 +220,8 @@
 }
 
 .feed-card {
-  background: var(--grey-50);
-  border: 1px solid var(--grey-100);
+  background: var(--purple-50);
+  border: 1px solid var(--purple-100);
   padding: 1.5rem;
 }
 
@@ -241,20 +241,20 @@
   margin: 0 0 0.5rem 0;
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--grey-700);
+  color: var(--purple-700);
 }
 
 .feed-url {
   margin: 0 0 0.5rem 0;
   font-size: 0.875rem;
-  color: var(--grey-400);
+  color: var(--purple-400);
   font-family: monospace;
   word-break: break-all;
 }
 
 .feed-description {
   margin: 0;
-  color: var(--grey-500);
+  color: var(--purple-500);
   font-size: 0.875rem;
   line-height: 1.6;
 }
@@ -262,7 +262,7 @@
 .unsubscribe-button {
   background: #ffe6e6;
   color: #721c24;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-weight: 600;
@@ -277,9 +277,9 @@
 
 .feed-item-count {
   background: var(--white);
-  color: var(--grey-400);
+  color: var(--purple-400);
   padding: 0.25rem 0.5rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   font-size: 0.75rem;
 }
 

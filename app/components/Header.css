@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: var(--purple-10);
+  border-bottom: 2px solid var(--purple-75);
+  padding: 10px 20px;
+}
+
+.header-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-right {
+   min-width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-left {
+  min-width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.blog-title {
+  font-family: var(--jacquard-font), monospace;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--purple-700);
+}

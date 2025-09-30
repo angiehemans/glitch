@@ -1,4 +1,4 @@
-/* Login wireframe styles */
+/* Login page styles */
 
 .login-container {
   min-height: 100vh;
@@ -6,11 +6,12 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  background: var(--purple-25);
 }
 
 .login-card {
   background: var(--white);
-  border: 1px solid var(--grey-100);
+  border: 2px solid var(--purple-75);
   padding: 2rem;
   width: 100%;
   max-width: 400px;
@@ -19,7 +20,7 @@
 .login-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--grey-700);
+  color: var(--purple-700);
   text-align: center;
   margin-bottom: 1.5rem;
 }
@@ -38,35 +39,46 @@
 
 .form-group label {
   font-weight: 600;
-  color: var(--grey-700);
+  color: var(--purple-700);
 }
 
 .form-group input {
   padding: 0.75rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   background: var(--white);
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: var(--grey-300);
+  border-color: var(--purple-300);
 }
 
 .login-button {
-  background: #333;
-  color: #fff;
-  border: 1px solid #333;
+  background: var(--purple-700);
+  color: var(--white);
+  border: 1px solid var(--purple-700);
   padding: 0.75rem;
   cursor: pointer;
   font-weight: 600;
   margin-top: 1rem;
 }
 
+.login-button:hover {
+  background: var(--purple-600);
+  border-color: var(--purple-600);
+}
+
+.login-button:disabled {
+  background: var(--purple-300);
+  border-color: var(--purple-300);
+  cursor: not-allowed;
+}
+
 .error-message {
   background: #ffe6e6;
   color: #721c24;
   padding: 1rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -75,7 +87,7 @@
   background: #e8f5e8;
   color: #2d5016;
   padding: 1rem;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--purple-100);
   margin-bottom: 1rem;
   text-align: center;
 }

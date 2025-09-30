@@ -13,6 +13,7 @@ export async function GET() {
           select: {
             name: true,
             email: true,
+            avatar: true,
           },
         },
       },
@@ -60,6 +61,7 @@ export async function POST(req: NextRequest) {
           select: {
             name: true,
             email: true,
+            avatar: true,
           },
         },
       },

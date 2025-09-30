@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { IconHeart, IconMessageCircle } from '@tabler/icons-react'
 
 import './PostCard.css'
 
@@ -10,6 +11,7 @@ interface Post {
   author: {
     name?: string | null
     email: string
+    avatar?: string | null
   }
 }
 
@@ -36,9 +38,18 @@ export default function PostCard({
 
   return (
     <div className="post-card">
-              <div className="post-meta">
+      <div className="post-meta">
           <span className="post-author">
-            By {post.author.name || post.author.email}
+            <div className="avatar">
+              {post.author.avatar ? (
+                <img src={post.author.avatar} alt={post.author.name || 'User avatar'} />
+              ) : (
+                <div className="avatar-placeholder">
+                  {(post.author.name?.[0] || post.author.email[0]).toUpperCase()}
+                </div>
+              )}
+            </div>
+            {post.author.name}
           </span>
           <span className="post-date">{formatDate(post.createdAt)}</span>
         </div>
@@ -50,10 +61,21 @@ export default function PostCard({
             {post.content.length > excerptLength && '...'}
           </div>
         )}
-        <Link href={`/posts/${post.id}`} className="post-card-link">
-          <div className="read-more">Read More</div>
-        </Link>
-    
+        <div className='post-actions'>
+          <div className="action-icons">
+            <button className="action-button like-button" type="button">
+              <IconHeart size={18} />
+              <span>0</span>
+            </button>
+            <button className="action-button comment-button" type="button">
+              <IconMessageCircle size={18} />
+              <span>0</span>
+            </button>
+          </div>
+          <Link href={`/posts/${post.id}`} className="post-card-link">
+            <div className="read-more">Read More</div>
+          </Link>
+        </div>
     </div>
   )
 }
