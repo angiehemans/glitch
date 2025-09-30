@@ -61,7 +61,7 @@ ${posts
     const pubDate = new Date(post.createdAt).toUTCString()
     const authorName = post.author.name || 'Blog Author'
 
-    const title = escapeXml(post.title)
+    const title = escapeXml(post.title || 'Untitled')
     const content = escapeXml(post.content)
     const description = escapeXml(
       post.content.length > 200

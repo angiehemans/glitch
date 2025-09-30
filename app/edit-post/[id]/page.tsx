@@ -78,7 +78,7 @@ export default function EditPostPage() {
         </div>
         <div className="error-state">
           <h2>Post not found</h2>
-          <p>The post you're looking for doesn't exist or has been deleted.</p>
+          <p>The post you&apos;re looking for doesn&apos;t exist or has been deleted.</p>
           <Link href="/dashboard" className="dashboard-link">
             Back to Dashboard
           </Link>
@@ -93,7 +93,7 @@ export default function EditPostPage() {
     setError('')
 
     try {
-      const updateData: any = { title, content }
+      const updateData: { title: string; content: string; published?: boolean } = { title, content }
       if (published !== undefined) {
         updateData.published = published
       }

@@ -4,6 +4,17 @@ import { useState } from 'react'
 
 import Button from '@/app/components/Button'
 
+interface FeedItemData {
+  id: string
+  title: string
+  description: string | null
+  link: string
+  pubDate: Date | null
+  feedId: string
+  guid: string | null
+  createdAt: Date
+}
+
 interface FeedItem {
   id: string
   title: string
@@ -25,7 +36,7 @@ interface Feed {
     title: string
     description: string | null
     url: string
-    feedItems: FeedItem[]
+    feedItems: FeedItemData[]
   }
 }
 

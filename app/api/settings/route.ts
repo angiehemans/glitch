@@ -24,7 +24,7 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 })
     }
 
-    const updateData: any = {}
+    const updateData: { name?: string | null; password?: string } = {}
 
     // Update name if provided
     if (name !== undefined && name !== user.name) {

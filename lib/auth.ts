@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs'
 
-import { NextAuthOptions } from 'next-auth'
+import { NextAuthOptions, User } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
 import { prisma } from './prisma'
@@ -13,7 +13,7 @@ export const authOptions: NextAuthOptions = {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials) {
+      async authorize(credentials): Promise<User | null> {
         if (!credentials?.email || !credentials?.password) {
           return null
         }
@@ -27,7 +27,6 @@ export const authOptions: NextAuthOptions = {
             email: true,
             name: true,
             password: true,
-            avatar: true,
           },
         })
 
@@ -47,8 +46,7 @@ export const authOptions: NextAuthOptions = {
         return {
           id: user.id,
           email: user.email,
-          name: user.name,
-          image: user.avatar,
+          name: user.name || undefined,
         }
       },
     }),
@@ -58,20 +56,17 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: '/login',
-    signUp: '/signup',
   },
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id
-        token.image = user.image
       }
       return token
     },
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id as string
-        session.user.image = token.image as string
       }
       return session
     },

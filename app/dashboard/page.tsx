@@ -120,7 +120,7 @@ export default function Dashboard() {
           user={session?.user ? {
             name: session.user.name,
             email: session.user.email || '',
-            avatar: session.user.image
+            avatar: null
           } : undefined}
         />
 

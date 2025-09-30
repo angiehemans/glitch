@@ -7,9 +7,12 @@ import './post.css'
 
 interface Post {
   id: string
-  title: string
+  title: string | null
   content: string
   createdAt: Date
+  updatedAt: Date
+  published: boolean
+  authorId: string
   author: {
     name: string | null
     email: string

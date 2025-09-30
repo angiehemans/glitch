@@ -85,7 +85,7 @@ export async function PUT(
     const { title, content, published } = await request.json()
     const { id } = await params
 
-    const updateData: any = { title: title || null, content }
+    const updateData: { title: string | null; content: string; published?: boolean } = { title: title || null, content }
     if (published !== undefined) {
       updateData.published = published
     }

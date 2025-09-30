@@ -221,7 +221,7 @@ export default function SettingsPage() {
           <h2 className="section-title">Profile Avatar</h2>
           <div className="avatar-section">
             <AvatarUpload
-              currentAvatar={session?.user?.image}
+              currentAvatar={null}
               onAvatarChange={(avatarUrl) => {
                 // Update session with new avatar
                 update({ image: avatarUrl })

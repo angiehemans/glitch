@@ -144,7 +144,7 @@ export default function AvatarUpload({
                 Loading...
               </span>
             ) : (
-              previewUrl ? 'Change Avatar' : 'Upload Avatar'
+              previewUrl ? "Change Avatar" : "Upload Avatar"
             )}
           </span>
         </label>

@@ -31,7 +31,6 @@ export default function RssButton() {
       onClick={copyRssUrl}
       variant="outline"
       size="small"
-      title="Copy RSS feed URL"
     >
       📡 {rssCopied ? 'Copied!' : 'RSS'}
     </Button>

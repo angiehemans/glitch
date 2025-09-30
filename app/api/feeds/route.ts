@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
     let feedData
     try {
       feedData = await parser.parseURL(url)
-    } catch (error) {
+    } catch {
       return NextResponse.json(
         { error: 'Invalid RSS feed URL' },
         { status: 400 }
