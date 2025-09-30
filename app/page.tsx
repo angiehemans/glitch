@@ -48,10 +48,10 @@ async function getPosts(): Promise<Post[]> {
 
 async function getBlogSettings(): Promise<BlogSettings> {
   try {
-    let blogSettings = await (prisma as any).blogSettings.findFirst()
+    let blogSettings = await prisma.blogSettings.findFirst()
 
     if (!blogSettings) {
-      blogSettings = await (prisma as any).blogSettings.create({
+      blogSettings = await prisma.blogSettings.create({
         data: {},
       })
     }
